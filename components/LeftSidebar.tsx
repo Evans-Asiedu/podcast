@@ -11,7 +11,7 @@ const LeftSidebar = () => {
   //   const router = useRouter();
 
   return (
-    <section className="left_sidebar">
+    <aside className="left_sidebar">
       <nav>
         <Link
           href="/"
@@ -22,27 +22,27 @@ const LeftSidebar = () => {
             Podcast
           </h1>
         </Link>
+        {sidebarLinks.map(({ imgURL, route, label }) => {
+          const isActive =
+            pathname === route || pathname.startsWith(`${route}/`);
+          return (
+            <Link
+              href={route}
+              key={label}
+              className={cn(
+                "flex justify-center items-center gap-4 py-4 max-lg:px-4 lg:justify-start lg:pl-8",
+                {
+                  "bg-nav-focus border-r-4 border-primary-1": isActive,
+                }
+              )}
+            >
+              <Image src={imgURL} alt={label} width={24} height={24} />
+              <p className="hidden lg:block">{label}</p>
+            </Link>
+          );
+        })}
       </nav>
-
-      {sidebarLinks.map(({ imgURL, route, label }) => {
-        const isActive = pathname === route || pathname.startsWith(`${route}/`);
-        return (
-          <Link
-            href={route}
-            key={label}
-            className={cn(
-              "flex justify-center items-center gap-4 py-4 max-lg:px-4 lg:justify-start lg:pl-8",
-              {
-                "bg-nav-focus border-r-4 border-primary-1": isActive,
-              }
-            )}
-          >
-            <Image src={imgURL} alt={label} width={24} height={24} />
-            <p className="hidden lg:block">{label}</p>
-          </Link>
-        );
-      })}
-    </section>
+    </aside>
   );
 };
 
