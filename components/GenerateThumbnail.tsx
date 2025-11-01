@@ -172,7 +172,7 @@ const GenerateThumbnail = ({
       {image && (
         <div className="w-full flex-center">
           <Image
-            src={image}
+            src={image as string}
             width={200}
             height={200}
             className="mt-5"

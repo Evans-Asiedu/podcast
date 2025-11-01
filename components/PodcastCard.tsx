@@ -1,19 +1,37 @@
+import { api } from "@/convex/_generated/api";
+import { PodcastCardProps } from "@/types";
+import { useMutation } from "convex/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-interface Props {
-  title: string;
-  description: string;
-  imgURL: string;
-  podcastId: number;
-}
+const PodcastCard = ({
+  title,
+  description,
+  imgUrl,
+  podcastId,
+}: PodcastCardProps) => {
+  const router = useRouter();
+  const updateView = useMutation(api.podcasts.updatePodcastViews);
 
-const PodcastCard = ({ title, description, imgURL }: Props) => {
+  const handleViews = async () => {
+    router.push(`/podcasts/${podcastId}`, { scroll: true });
+
+    // Increase views
+    try {
+      await updateView({
+        podcastId: podcastId,
+      });
+    } catch (error) {
+      console.log("Could not update views", error);
+    }
+  };
+
   return (
     <div className="cursor-pointer">
-      <figure className="flex flex-col gap-2">
+      <figure className="flex flex-col gap-2" onClick={handleViews}>
         <Image
-          src={imgURL}
+          src={imgUrl}
           alt={title}
           width={174}
           height={174}
