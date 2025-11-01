@@ -37,6 +37,7 @@ const GenerateThumbnail = ({
       const file = new File([blob], fileName, { type: "image/png" });
 
       const upload = await startUpload([file]);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const storageId = (upload[0].response as any).storageId;
 
       setImageStorageId(storageId);
@@ -107,7 +108,7 @@ const GenerateThumbnail = ({
         </Button>
       </div>
 
-      {!isAiThumbnail ? (
+      {isAiThumbnail ? (
         <div className="flex flex-col gap-2">
           <div className="mt-5 flex flex-col gap-2.5">
             <Label className="text-16 font-bold text-white-1">
