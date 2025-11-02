@@ -62,7 +62,7 @@ const LeftSidebar = () => {
         <div className="flex-center lg:w-[80%] pb-14 mx-auto">
           <Button
             className="text-16 w-full bg-primary-1 font-medium flex gap-1"
-            onClick={() => signOut()}
+            onClick={() => signOut(() => router.push("/"))}
           >
             {/* <GoSignIn size={20} /> */}
             <span className="hidden lg:block">Log Out</span>
