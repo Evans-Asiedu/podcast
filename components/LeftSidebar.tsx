@@ -2,13 +2,18 @@
 
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
+import { SignedIn, SignedOut, useClerk } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { Button } from "./ui/button";
+import { useAudio } from "@/app/providers/AudioProvider";
 
 const LeftSidebar = () => {
   const pathname = usePathname();
-  //   const router = useRouter();
+  const router = useRouter();
+  const { signOut } = useClerk();
+  const { audio } = useAudio();
 
   return (
     <aside className="left_sidebar">
@@ -42,6 +47,28 @@ const LeftSidebar = () => {
           );
         })}
       </nav>
+
+      <SignedOut>
+        <div className="flex-center lg:w-[80%] pb-14 mx-auto">
+          <Button asChild className="text-16 w-full bg-primary-1 font-medium">
+            <Link href="/sign-in" className="flex gap-1">
+              {/* <IoIosLogOut size={20} /> */}
+              <span className="hidden lg:block">Sign in</span>
+            </Link>
+          </Button>
+        </div>
+      </SignedOut>
+      <SignedIn>
+        <div className="flex-center lg:w-[80%] pb-14 mx-auto">
+          <Button
+            className="text-16 w-full bg-primary-1 font-medium flex gap-1"
+            onClick={() => signOut()}
+          >
+            {/* <GoSignIn size={20} /> */}
+            <span className="hidden lg:block">Log Out</span>
+          </Button>
+        </div>
+      </SignedIn>
     </aside>
   );
 };
