@@ -12,24 +12,24 @@ const PodcastCard = ({
   podcastId,
 }: PodcastCardProps) => {
   const router = useRouter();
-  const updateView = useMutation(api.podcasts.updatePodcastViews);
+  // const updateView = useMutation(api.podcasts.updatePodcastViews);
 
   const handleViews = async () => {
     router.push(`/podcasts/${podcastId}`, { scroll: true });
 
     // Increase views
-    try {
-      await updateView({
-        podcastId: podcastId,
-      });
-    } catch (error) {
-      console.log("Could not update views", error);
-    }
+    // try {
+    //   await updateView({
+    //     podcastId: podcastId,
+    //   });
+    // } catch (error) {
+    //   console.log("Could not update views", error);
+    // }
   };
 
   return (
-    <div className="cursor-pointer">
-      <figure className="flex flex-col gap-2" onClick={handleViews}>
+    <div className="cursor-pointer" onClick={handleViews}>
+      <figure className="flex flex-col gap-2">
         <Image
           src={imgUrl}
           alt={title}
