@@ -27,6 +27,8 @@ const PodcastCard = ({
     // }
   };
 
+  console.log("img: ", imgUrl);
+
   return (
     <div className="cursor-pointer" onClick={handleViews}>
       <figure className="flex flex-col gap-2">
