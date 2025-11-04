@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { formatTime } from "@/lib/formatTime";
 import { cn } from "@/lib/utils";
-import { useAudio } from "@/app/providers/AudioProvider";
+import { useAudio } from "@/providers/AudioProvider";
 import { HiOutlineXMark, HiPauseCircle, HiPlayCircle } from "react-icons/hi2";
 import { Progress } from "@/components/ui/progress";
 import { FaBackward, FaForward } from "react-icons/fa";
