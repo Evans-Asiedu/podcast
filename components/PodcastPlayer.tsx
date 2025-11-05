@@ -132,24 +132,32 @@ const PodcastPlayer = () => {
               className="aspect-square rounded-xl"
             />
           </Link>
-          <div className="flex w-[160px] flex-col">
-            <h2 className="text-14 truncate font-semibold text-white-1">
+          <div className="w-40 flex flex-col">
+            <h2 className="text-16 truncate font-semibold text-white-1">
               {audio?.title}
             </h2>
             <p className="text-12 font-normal text-white-2">{audio?.author}</p>
           </div>
         </div>
         <div className="flex-center cursor-pointer gap-3 md:gap-6">
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 text-white-4">
             <FaBackward size={20} onClick={() => skipTime(-SKIP_TIME)} />
             <h2 className="text-12 font-bold text-white-4">-5</h2>
           </div>
           {isPlaying ? (
-            <HiPauseCircle size="2.5rem" onClick={togglePlayPause} />
+            <HiPauseCircle
+              size="2.5rem"
+              onClick={togglePlayPause}
+              className="text-white-4"
+            />
           ) : (
-            <HiPlayCircle size="2.5rem" onClick={togglePlayPause} />
+            <HiPlayCircle
+              size="2.5rem"
+              onClick={togglePlayPause}
+              className="text-white-4"
+            />
           )}
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 text-white-4">
             <h2 className="text-12 font-bold text-white-4">+5</h2>
             <FaForward size={20} onClick={() => skipTime(SKIP_TIME)} />
           </div>
@@ -179,7 +187,11 @@ const PodcastPlayer = () => {
           {/* </div> */}
         </div>
 
-        <HiOutlineXMark onClick={closePodcastPlayer} size="1.5rem" />
+        <HiOutlineXMark
+          onClick={closePodcastPlayer}
+          size="1.5rem"
+          className="text-white-4"
+        />
       </section>
     </div>
   );
