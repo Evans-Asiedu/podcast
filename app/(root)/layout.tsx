@@ -15,7 +15,7 @@ export default function RootLayout({
         <LeftSidebar />
         <section className="min-h-screen flex-1 px-4 sm:px-14">
           <div className="w-full mx-auto flex flex-col max-w-5xl max-sm:px-4">
-            <div className="h-16 flex justify-between items-center md:hidden">
+            <div className="h-16 flex items-center justify-between md:hidden">
               <Image
                 src="/icons/logo.svg"
                 alt="menu icon"
