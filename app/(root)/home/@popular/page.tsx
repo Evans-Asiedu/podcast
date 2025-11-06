@@ -4,8 +4,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Header from "@/components/Header";
 import PodcastRowItem from "@/components/PodcastRowItem";
-// import PodcastRowItem from "@/components/podcast/PodcastRowItem";
-// import { MultiplePodcastRowsSkeleton } from "@/components/skeleton/index";
+import { MultiplePodcastRowsSkeleton } from "@/components/Skeleton";
 
 function PopularPodcasts() {
   const podcasts = useQuery(api.podcasts.getTrendingPodcasts);
@@ -17,8 +16,7 @@ function PopularPodcasts() {
       />
 
       {!podcasts ? (
-        // <MultiplePodcastRowsSkeleton count={4} />
-        <div>No podcasts</div>
+        <MultiplePodcastRowsSkeleton count={4} />
       ) : (
         <div>
           {podcasts

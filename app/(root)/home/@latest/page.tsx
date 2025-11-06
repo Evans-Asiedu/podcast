@@ -3,8 +3,8 @@
 import PodcastCard from "@/components/PodcastCard";
 import { usePaginatedQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-// import { RowSkeleton } from "@/components/skeleton/index";
 import { Button } from "@/components/ui/button";
+import { RowSkeleton } from "@/components/Skeleton";
 
 const PER_PAGE = 4;
 
@@ -40,7 +40,7 @@ function AllPodcasts() {
             )}
           </div>
         }
-        {/* {(!latestPodcasts || isLoading) && <RowSkeleton />} */}
+        {(!latestPodcasts || isLoading) && <RowSkeleton />}
 
         {status !== "Exhausted" && (
           <Button

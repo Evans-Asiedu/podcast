@@ -4,10 +4,10 @@ import Searchbar from "@/components/Searchbar";
 import { useQuery } from "convex/react";
 import React from "react";
 import { api } from "@/convex/_generated/api";
-import LoaderSpinner from "@/components/LoaderSpinner";
 import PodcastCard from "@/components/PodcastCard";
 import EmptyState from "@/components/EmptyState";
 import { useSearchParams } from "next/navigation";
+import { GridSkeleton } from "@/components/Skeleton";
 
 const Discover = () => {
   const searchParams = useSearchParams();
@@ -47,7 +47,7 @@ const Discover = () => {
             )}
           </>
         ) : (
-          <LoaderSpinner />
+          <GridSkeleton />
         )}
       </div>
     </div>

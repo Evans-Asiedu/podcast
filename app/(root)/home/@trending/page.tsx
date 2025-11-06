@@ -2,9 +2,8 @@
 
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-// import { RowSkeleton } from "@/components/skeleton/index";
-// import PodcastCard from "@/components/podcast/PodcastCard";
 import PodcastCard from "@/components/PodcastCard";
+import { RowSkeleton } from "@/components/Skeleton";
 
 function TrendingPodcasts() {
   const trendingPodcasts = useQuery(api.podcasts.getTrendingPodcasts);
@@ -13,8 +12,7 @@ function TrendingPodcasts() {
     <section className="flex flex-col gap-5">
       <h1 className="text-20 font-bold text-white-1">Trending Now</h1>
       {!trendingPodcasts ? (
-        // <RowSkeleton />
-        <div>No Trending podcast</div>
+        <RowSkeleton />
       ) : (
         <div className="podcast_grid">
           {trendingPodcasts
