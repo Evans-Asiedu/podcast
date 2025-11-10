@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { useAudio } from "@/providers/AudioProvider";
 import { useMutation } from "convex/react";
-import { deletePodcast } from "./../convex/podcasts";
 import { api } from "@/convex/_generated/api";
 import LoaderSpinner from "./LoaderSpinner";
 import { HiPlayCircle } from "react-icons/hi2";

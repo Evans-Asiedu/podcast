@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 "use client";
 
 import { useQuery } from "convex/react";
-
 import EmptyState from "@/components/EmptyState";
 import LoaderSpinner from "@/components/LoaderSpinner";
 import PodcastCard from "@/components/PodcastCard";
