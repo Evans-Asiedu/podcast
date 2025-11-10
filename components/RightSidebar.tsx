@@ -9,7 +9,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useRouter } from "next/navigation";
 import LoaderSpinner from "./LoaderSpinner";
-import { useAudio } from "@/app/providers/AudioProvider";
+import { useAudio } from "@/providers/AudioProvider";
 import { cn } from "@/lib/utils";
 
 const RightSidebar = () => {
@@ -45,7 +45,7 @@ const RightSidebar = () => {
         <Header headerTitle="Fans Like You" />
         <Carousel fansLikeDetail={topPodcasters!} />
       </section>
-      <section className="flex flex-col gap-8 pt-12">
+      <section className="flex flex-col gap-6 pt-12">
         <Header headerTitle="Top Podcastrs" />
         <div className="flex flex-col gap-6">
           {topPodcasters?.slice(0, 3).map((podcaster) => (
