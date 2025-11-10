@@ -31,6 +31,7 @@ import GenerateThumbnail from "@/components/GenerateThumbnail";
 import { useRouter } from "next/navigation";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { toast } from "sonner";
 
 const voiceCategories = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"];
 
@@ -72,10 +73,11 @@ const CreatePodcast = () => {
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log("submit is called");
     try {
       setIsSubmitting(true);
       if (!audioUrl || !imageUrl || !voiceType) {
-        // TODO: add toast notification to alert user to add those values
+        toast.error("Please generate audio and image");
         setIsSubmitting(false);
         throw new Error("Please generate audio and image");
       }
@@ -94,14 +96,13 @@ const CreatePodcast = () => {
         imageStorageId: imageStorageId!,
       });
 
-      // TODO: add toast notification to alert user of created podcast
+      toast.success("Podcast created sucessfully");
       setIsSubmitting(false);
 
       router.push("/");
     } catch (error) {
       console.log(error);
-      // TODO: Add toast notification to alert error in creating podcast
-
+      toast.error("Error creating podcast");
       setIsSubmitting(false);
     }
   }

@@ -11,6 +11,7 @@ import { Textarea } from "./ui/textarea";
 import { Loader } from "lucide-react";
 import { Input } from "./ui/input";
 import Image from "next/image";
+import { toast } from "sonner";
 
 const GenerateThumbnail = ({
   setImage,
@@ -31,6 +32,7 @@ const GenerateThumbnail = ({
 
   const handleImage = async (blob: Blob, fileName: string) => {
     setIsImageLoading(true);
+    console.log("handle image called, and isImageLoading set");
     setImage("");
 
     try {
@@ -46,11 +48,10 @@ const GenerateThumbnail = ({
       setImage(imageUrl!);
       setIsImageLoading(false);
 
-      // TODO: add toast notification to alert thumbnail generated successfully
+      toast.success("Image uploaded successfully");
     } catch (error) {
       console.log(error);
-
-      // TODO: add toast notification to notify of error
+      toast.error("Error generating thumbnail");
     }
   };
 
@@ -62,7 +63,7 @@ const GenerateThumbnail = ({
     } catch (error) {
       console.log(error);
 
-      // TODO: Add toast notification to alert error
+      toast.error("Error generating thumbnail");
     }
   };
 
@@ -79,7 +80,7 @@ const GenerateThumbnail = ({
       handleImage(blob, file.name);
     } catch (error) {
       console.log(error);
-      // TODO: Error uploading image
+      toast.error("Error uploading image");
     }
   };
 
@@ -124,7 +125,7 @@ const GenerateThumbnail = ({
           </div>
           <div className="w-full max-w-[200px]">
             <Button
-              type="submit"
+              type="button"
               className="py-4 bg-primary-1 text-16 font-bold text-white-1"
               onClick={generateImage}
             >

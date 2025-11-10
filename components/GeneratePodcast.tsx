@@ -8,6 +8,7 @@ import { api } from "@/convex/_generated/api";
 import { useUploadFiles } from "@xixixao/uploadstuff/react";
 import { v4 as uuidv4 } from "uuid";
 import { Loader } from "lucide-react";
+import { toast } from "sonner";
 
 const useGeneratePodcast = ({
   setAudio,
@@ -28,10 +29,8 @@ const useGeneratePodcast = ({
     setAudio("");
 
     if (!voicePrompt) {
-      // TODO: Add toast notification
-      console.log("Please provide a voice type to generate a podcast");
-      setIsGenerating(false);
-      return;
+      toast.error("Please provide a voice prompt to generate a podcast");
+      return setIsGenerating(false);
     }
 
     try {
@@ -54,11 +53,10 @@ const useGeneratePodcast = ({
       setAudio(audioUrl!);
       setIsGenerating(false);
 
-      // TODO: Add toast notification for success
+      toast.success("Podcast generated successfully");
     } catch (error) {
       console.log("Erro generating podcast", error);
-      // TODO: Add toast notification for error creating a podcast
-
+      toast.error("Error creating a podcast");
       setIsGenerating(false);
     }
   };
@@ -90,7 +88,7 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
       </div>
       <div className="mt-2">
         <Button
-          type="submit"
+          type="button"
           className="py-4 bg-primary-1 text-16 font-bold text-white-1"
           onClick={generatePodcast}
         >

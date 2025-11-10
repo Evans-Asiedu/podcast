@@ -3,11 +3,13 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
-import { useAudio } from "@/app/providers/AudioProvider";
+import { useAudio } from "@/providers/AudioProvider";
 import { useMutation } from "convex/react";
 import { deletePodcast } from "./../convex/podcasts";
 import { api } from "@/convex/_generated/api";
 import LoaderSpinner from "./LoaderSpinner";
+import { HiPlayCircle } from "react-icons/hi2";
+import { toast } from "sonner";
 
 const PodcastDetailPlayer = ({
   audioUrl,
@@ -29,11 +31,12 @@ const PodcastDetailPlayer = ({
   const handleDelete = async () => {
     try {
       await deletePodcast({ podcastId, imageStorageId, audioStorageId });
-      // TODO: add toast notification to alert delete
+      toast.success("Podcast deleted ");
+
       router.push("/");
     } catch (error) {
       console.error("Error deleting podcast", error);
-      // TODO: add toast notification to alert error in deleting
+      toast.error("Error deleting podcast");
     }
   };
 
@@ -86,12 +89,7 @@ const PodcastDetailPlayer = ({
             className="w-full text-16 font-extrabold text-white-1 max-w-[250px] bg-primary-1"
             onClick={handlePlay}
           >
-            <Image
-              src="/icons/Play.svg"
-              width={20}
-              height={20}
-              alt="random play"
-            />
+            <HiPlayCircle size="4rem" className="text-white-4" />
             &nbsp; Play Podcast
           </Button>
         </div>
