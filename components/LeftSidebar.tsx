@@ -2,18 +2,21 @@
 
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
-import { SignedIn, SignedOut, useClerk } from "@clerk/nextjs";
+import { SignedIn, SignedOut, useClerk, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "./ui/button";
-import { useAudio } from "@/app/providers/AudioProvider";
+// import { useAudio } from "@/app/providers/AudioProvider";
+import clsx from "clsx";
+import { HiUser } from "react-icons/hi2";
 
 const LeftSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { signOut } = useClerk();
-  const { audio } = useAudio();
+  // const { audio } = useAudio();
+  const { user } = useUser();
 
   return (
     <aside className="left_sidebar">
@@ -46,6 +49,26 @@ const LeftSidebar = () => {
             </Link>
           );
         })}
+
+        {/* <SignedIn>
+          {user && (
+            <Link
+              href={`/user-profile`}
+              key="user-profile"
+              className={clsx(
+                "flex gap-3 items-center py-4 max-lg:px-4 justify-center lg:justify-start lg:pl-8",
+                {
+                  "bg-nav-focus border-r-4 border-primary-1":
+                    pathname === `/user-profile` ||
+                    pathname.startsWith(`/user-profile`),
+                }
+              )}
+            >
+              <HiUser size={24} />
+              <p className="hidden lg:block">My profile</p>
+            </Link>
+          )}
+        </SignedIn> */}
       </nav>
 
       <SignedOut>
