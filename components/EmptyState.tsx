@@ -11,7 +11,7 @@ const EmptyState = ({
   buttonText,
 }: EmptyStateProps) => {
   return (
-    <section className="size-full flex flex-center gap-3">
+    <section className="size-full flex-col gap-3 flex-center">
       <Image
         src="/icons/emptyState.svg"
         width={250}
@@ -19,7 +19,7 @@ const EmptyState = ({
         alt="empty state"
       />
       <div className="w-full flex flex-col gap-3 flex-center max-w-[254px]">
-        <h1 className="text-16 font-medium text=white-1 text-center">
+        <h1 className="text-16 font-medium text-white-1 text-center">
           {title}
         </h1>
         {search && (
@@ -28,15 +28,17 @@ const EmptyState = ({
           </p>
         )}
         {buttonLink && (
-          <Button>
-            <Link href={buttonLink} className="flex gap-1">
+          <Button className="bg-primary-1">
+            <Link href={buttonLink} className="flex gap-1 items-center">
               <Image
                 src="/icons/discover.svg"
                 width={20}
                 height={20}
                 alt="discover"
               />
-              <h1>{buttonText}</h1>
+              <h1 className="text-16 font-extrabold text-white-1">
+                {buttonText}
+              </h1>
             </Link>
           </Button>
         )}
