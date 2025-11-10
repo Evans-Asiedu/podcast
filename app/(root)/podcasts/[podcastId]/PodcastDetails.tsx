@@ -39,7 +39,6 @@ const PodcastDetails = ({ podcastId }: { podcastId: Id<"podcasts"> }) => {
         </figure>
       </header>
 
-      {/* { TODO: implement podcast player } */}
       <PodcastDetailPlayer
         isOwner={isOwner}
         podcastId={podcast._id}
