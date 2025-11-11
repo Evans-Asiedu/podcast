@@ -7,6 +7,7 @@ import LoaderSpinner from "@/components/LoaderSpinner";
 import PodcastCard from "@/components/PodcastCard";
 import ProfileCard from "@/components/ProfileCard";
 import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
 
 // interface Props {
 //   profileId: string;
@@ -29,7 +30,19 @@ const ProfilePage = ({ profileId }: { profileId: string }) => {
       </h1>
       <div className="mt-6 flex flex-col gap-6 max-md:items-center md:flex-row">
         <ProfileCard
-          podcastData={podcastsData!}
+          podcastData={{
+            ...podcastsData,
+            podcasts: podcastsData.podcasts.map((podcast) => ({
+              ...podcast,
+              imageUrl: podcast.imageUrl ?? "",
+              audioUrl: podcast.audioUrl ?? "",
+              audioStorageId:
+                podcast.audioStorageId ?? ("default-id" as Id<"_storage">),
+              imageStorageId:
+                podcast.imageStorageId ?? ("default-id" as Id<"_storage">),
+            })),
+          }}
+          // podcastData={podcastsData!}
           imageUrl={user?.imageUrl!}
           userFirstName={user?.name!}
         />
