@@ -9,10 +9,6 @@ import ProfileCard from "@/components/ProfileCard";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 
-// interface Props {
-//   profileId: string;
-// }
-
 const ProfilePage = ({ profileId }: { profileId: string }) => {
   const user = useQuery(api.users.getUserById, {
     clerkId: profileId,
@@ -26,7 +22,7 @@ const ProfilePage = ({ profileId }: { profileId: string }) => {
   return (
     <section className="mt-9 flex flex-col">
       <h1 className="text-20 font-bold text-white-1 max-md:text-center">
-        Podcaster Profile
+        Podcast Profile
       </h1>
       <div className="mt-6 flex flex-col gap-6 max-md:items-center md:flex-row">
         <ProfileCard
