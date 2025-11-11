@@ -2,14 +2,14 @@
 
 import Searchbar from "@/components/Searchbar";
 import { useQuery } from "convex/react";
-import React from "react";
 import { api } from "@/convex/_generated/api";
 import PodcastCard from "@/components/PodcastCard";
 import EmptyState from "@/components/EmptyState";
 import { useSearchParams } from "next/navigation";
 import { GridSkeleton } from "@/components/Skeleton";
+import { Suspense } from "react";
 
-const Discover = () => {
+const DiscoverContent = () => {
   const searchParams = useSearchParams();
   const search = searchParams.get("search") || "";
 
@@ -51,6 +51,14 @@ const Discover = () => {
         )}
       </div>
     </div>
+  );
+};
+
+const Discover = () => {
+  return (
+    <Suspense fallback={<GridSkeleton />}>
+      <DiscoverContent />
+    </Suspense>
   );
 };
 
