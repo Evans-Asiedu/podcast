@@ -42,9 +42,8 @@ const ProfilePage = ({ profileId }: { profileId: string }) => {
                 podcast.imageStorageId ?? ("default-id" as Id<"_storage">),
             })),
           }}
-          // podcastData={podcastsData!}
-          imageUrl={user?.imageUrl!}
-          userFirstName={user?.name!}
+          imageUrl={user.imageUrl ?? ""}
+          userFirstName={user.name ?? "Unknown User"}
         />
       </div>
       <section className="mt-9 flex flex-col gap-5">
