@@ -1,22 +1,21 @@
 import { StepForward } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-// import PodcraftLogo from "@/components/partials/PodcraftLogo";
+import PodcastLogo from "@/components/PodcastLogo";
 import { Button } from "@/components/ui/button";
 
 function LandingPage() {
   return (
-    <main className="bg-gradient-to-b from-[#15171c] to-[#392d69] h-full min-h-screen">
+    <main className="bg-linear-to-b from-black-1 to-[#392d69] h-full min-h-screen">
       <div className="container relative m-0 mx-auto py-10 md:px-10">
         <div className="max-width flex items-center justify-center lg:justify-between">
-          {/* <PodcraftLogo /> */}
-          <div>Logo</div>
+          <PodcastLogo />
         </div>
-        <div className="w-full px-4 pt pt-12 md:px-4 lg:px-8 xl:px-10 2xl:px-0">
-          <div className="flex h-full w-full flex-col items-center justify-center">
+        <div className="w-full px-4 pt-12 md:px-4 lg:px-8 xl:px-10 2xl:px-0">
+          <div className="h-full w-full flex flex-col items-center justify-center">
             <span
               rel="noreferrer"
-              className="bg-none hover:bg-white-1 mb-6 cursor-pointer rounded-2xl border border-black px-4 py-1 text-xs transition duration-300 ease-in-out hover:text-slate-700 sm:text-base text-center"
+              className="bg-none hover:bg-white-1 mb-6 cursor-pointer rounded-2xl border border-black px-4 py-1 text-white text-xs transition duration-300 ease-in-out hover:text-slate-700 sm:text-base text-center"
             >
               Powered by{" "}
               <a
@@ -35,14 +34,14 @@ function LandingPage() {
                 OpenAI ✨
               </a>
             </span>
-            <h1 className="inline-block text-center text-4xl font-medium tracking-tighter text-dark lg:text-7xl">
+            <h1 className="inline-block text-center text-4xl font-medium tracking-tighter text-white lg:text-7xl">
               Your Podcast Journey Starts Here{" "}
               <br className="hidden lg:inline-block" />
               <span className="text-3xl tracking-normal">
                 Open Source & AI-Powered
               </span>
             </h1>
-            <h2 className="mt-8 text-center text-xl font-light tracking-tight lg:text-3xl">
+            <h2 className="mt-8 text-xl text-center text-white font-light tracking-tight lg:text-3xl">
               <span className="font-bold px-1">Create, share and discover</span>{" "}
               stories effortlessly with Podcraft.
               <br className="hidden lg:inline-block" />
@@ -58,14 +57,6 @@ function LandingPage() {
       </div>
       <div className="">
         <div className="flex items-center justify-center">
-          {/* <Image
-                alt="mobile"
-                loading="lazy"
-                width="500"
-                height="600"
-                className="z-10 max-w-[400px]"
-                src={"/mobile.png"}
-              /> */}
           <Image
             src="/screenshots/desktop.png"
             alt="laptop"
@@ -78,7 +69,7 @@ function LandingPage() {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <footer className="bottom-0 container mx-auto my-5 flex flex-col items-center justify-between space-y-3 space-x-4 px-3 pt-4 text-center sm:flex-row sm:pt-2 md:text-lg">
+        <footer className="bottom-0 container mx-auto my-5 flex flex-col items-center justify-between space-y-3 space-x-4 px-3 pt-4 text-center text-white sm:flex-row sm:pt-2 md:text-lg">
           <div>
             Powered by{" "}
             <a
@@ -102,7 +93,7 @@ function LandingPage() {
               className="group"
               aria-label="GitHub"
               target="_blank"
-              href="https://github.com/zeynabmvs"
+              href="https://github.com/Evans-Asiedu"
             >
               <svg aria-hidden="true" className="h-6 w-6 fill-white-1">
                 <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"></path>
@@ -116,29 +107,19 @@ function LandingPage() {
 }
 function GetStartedButton() {
   return (
-    <Button className="text-20 w-full bg-primary-1 font-medium px-8 py-4 h-fit">
+    <Button className="w-full h-fit px-8 py-4 bg-primary-1 text-20 font-medium text-white">
       <Link href="/home" className="flex gap-1 items-center">
         <span>Get Started for free</span>
         <StepForward />
       </Link>
     </Button>
-
-    // <Link
-    //   href="/home"
-    //   className="flex items-center justify-center px-8 py-4 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-100 rounded-xl group bg-gradient-to-br from-purple-600 to-orange-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-300"
-    // >
-    //   <span className="flex items-center gap-1">
-    //     Get Started for free
-    //     <StepForward />
-    //   </span>
-    // </Link>
   );
 }
 
 const GithubStarButton = () => {
   return (
     <Link
-      href="https://github.com/zeynabmvs/podcraft/"
+      href="https://github.com/Evans-Asiedu/podcast/"
       className="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow hover:bg-black/90 h-10 px-4 py-2 max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
     >
       <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40" />
