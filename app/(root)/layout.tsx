@@ -1,4 +1,6 @@
-import LeftSidebar from "@/components/LeftSidebar";
+"use client";
+
+//import LeftSidebar from "@/components/LeftSidebar";
 import MobileNav from "@/components/MobileNav";
 import PodcastPlayer from "@/components/PodcastPlayer";
 import RightSidebar from "@/components/RightSidebar";
@@ -6,6 +8,12 @@ import { Toaster } from "@/components/ui/sonner";
 import Image from "next/image";
 
 import "../globals.css";
+
+import dynamic from "next/dynamic";
+
+const LeftSidebar = dynamic(() => import("@/components/LeftSidebar"), {
+  ssr: false,
+});
 
 export default function RootLayout({
   children,

@@ -8,7 +8,7 @@ const PodcastLogo = () => {
       href="/"
       className="flex items-center gap-1 pb-10 cursor-pointer max-lg:justify-center lg:pl-8"
     >
-      <Image src="/icons/logo.svg" width={40} height={40} alt="logo" />
+      <Image src="/icons/logo.svg" width={37} height={37} alt="logo" />
       <h1 className="text-32 font-extrabold text-white max-lg:hidden">
         Podcast
       </h1>
