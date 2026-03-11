@@ -1,7 +1,14 @@
 "use client";
 
 import React from "react";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+  SheetHeader,
+} from "./ui/sheet";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import Link from "next/link";
 import Image from "next/image";
@@ -29,6 +36,9 @@ const MobileNav = () => {
           side="left"
           className="border-none bg-black-1 pl-4 text-white-1  "
         >
+          <SheetHeader>
+            <SheetTitle>Mobile Nav</SheetTitle>
+          </SheetHeader>
           <Link
             href="/"
             className="flex cursor-pointer items-center gap-1 pb-10 pl-4 pt-2"
@@ -54,7 +64,7 @@ const MobileNav = () => {
                           {
                             "bg-nav-focus border-r-4 border-primary-1":
                               isActive,
-                          }
+                          },
                         )}
                       >
                         <Image
