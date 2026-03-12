@@ -32,14 +32,14 @@ const PodcastRowItem = ({
         podcastId: podcastId,
       });
     } catch (error) {
-      console.log("could not update views!");
+      console.log("could not update views!", error);
     }
   };
 
   return (
     <div className="cursor-pointer border-b border-b-black-4 last-of-type:border-none">
-      <div className="flex items-center justify-between py-4 -pl-4">
-        <div className="flex gap-3 items-center w-full" onClick={handleViews}>
+      <div className="flex justify-between items-center py-4 -pl-4">
+        <div className="w-full flex gap-3 items-center" onClick={handleViews}>
           <Image
             src={imgUrl}
             width={50}
@@ -51,14 +51,14 @@ const PodcastRowItem = ({
           <div className="flex flex-col justify-between">
             <p className="text-white-1">{title}</p>
 
-            <div className="flex gap-3 text-sm text-gray-400">
+            <div className="hidden md:flex gap-3 text-sm text-gray-400">
               <p>by {author}</p>
             </div>
           </div>
         </div>
 
-        <div className="flex gap-5 text-md text-gray-400 justify-start">
-          <div className="flex gap-1 items-center">
+        <div className="w-full flex justify-end gap-5 text-md text-gray-400 sm:flex sm:justify-center">
+          <div className="hidden sm:flex gap-1 items-center">
             <PiHeadphonesFill size={16} />
             {views}
           </div>
@@ -68,7 +68,7 @@ const PodcastRowItem = ({
           </div>
         </div>
 
-        <div className="w-full flex gap-12 justify-end text-white-1">
+        <div className="w-full flex justify-end text-white-1">
           <HiPlay
             size={28}
             onClick={() =>
