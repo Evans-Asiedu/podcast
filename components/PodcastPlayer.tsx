@@ -113,7 +113,7 @@ const PodcastPlayer = () => {
         hidden: !audio?.audioUrl || audio?.audioUrl === "",
       })}
     >
-      <section className="glassmorphism-black flex h-[85px] w-full items-center justify-between px-4 max-md:justify-center max-md:gap-5 md:px-12">
+      <section className="glassmorphism-black flex h-[85px] w-full items-center px-4 max-md:justify-center max-md:gap-5 md:px-12 xl:gap-50">
         <audio
           ref={audioRef}
           src={audio?.audioUrl}
@@ -121,6 +121,7 @@ const PodcastPlayer = () => {
           onLoadedMetadata={handleLoadedMetadata}
           onEnded={handleAudioEnded}
         />
+
         <div className="flex items-center gap-4 max-md:hidden">
           <Link href={`/podcasts/${audio?.podcastId}`}>
             <Image
@@ -136,62 +137,72 @@ const PodcastPlayer = () => {
             <h2 className="text-16 truncate font-semibold text-white-1">
               {audio?.title}
             </h2>
-            <p className="text-12 font-normal text-white-2">{audio?.author}</p>
-          </div>
-        </div>
-        <div className="flex-center cursor-pointer gap-3 md:gap-6">
-          <div className="flex items-center gap-1.5 text-white-4">
-            <FaBackward size={20} onClick={() => skipTime(-SKIP_TIME)} />
-            <h2 className="text-12 font-bold text-white-4">-5</h2>
-          </div>
-          {isPlaying ? (
-            <HiPauseCircle
-              size="2.5rem"
-              onClick={togglePlayPause}
-              className="text-white-4"
-            />
-          ) : (
-            <HiPlayCircle
-              size="2.5rem"
-              onClick={togglePlayPause}
-              className="text-white-4"
-            />
-          )}
-          <div className="flex items-center gap-1.5 text-white-4">
-            <h2 className="text-12 font-bold text-white-4">+5</h2>
-            <FaForward size={20} onClick={() => skipTime(SKIP_TIME)} />
+            <p className="text-12 font-normal text-white-1">{audio?.author}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <div className="w-[250px]">
-            <Progress
-              value={(currentTime / duration) * 100}
-              className="w-full"
-              max={duration || 100}
-            />
+        <div className="grid grid-cols-4 gap-x-8 items-center md:grid-cols-6 lg:grid-cols-9">
+          <div className="order-3 col-span-3 md:order-1 md:col-span-2">
+            <div className="flex-center cursor-pointer gap-3 md:gap-6">
+              <div className="flex items-center gap-1.5 text-white-1">
+                <FaBackward size={20} onClick={() => skipTime(-SKIP_TIME)} />
+                <h2 className="text-12 font-bold text-white-1">-5</h2>
+              </div>
+              {isPlaying ? (
+                <HiPauseCircle
+                  size="2.5rem"
+                  onClick={togglePlayPause}
+                  className="text-white-1"
+                />
+              ) : (
+                <HiPlayCircle
+                  size="2.5rem"
+                  onClick={togglePlayPause}
+                  className="text-white-1"
+                />
+              )}
+              <div className="flex items-center gap-1.5 text-white-1">
+                <h2 className="text-12 font-bold text-white-1">+5</h2>
+                <FaForward size={20} onClick={() => skipTime(SKIP_TIME)} />
+              </div>
+            </div>
           </div>
 
-          <h2 className="text-16 font-normal text-white-2 max-md:hidden">
-            {formatTime(duration)}
-          </h2>
-          {/* <div className="flex"> */}
-          <Image
-            src={isMuted ? "/icons/unmute.svg" : "/icons/mute.svg"}
-            width={24}
-            height={24}
-            alt="mute unmute"
-            onClick={toggleMute}
-            className="cursor-pointer"
-          />
-          {/* </div> */}
-        </div>
+          <div className="order-1 col-span-3 md:order-2 md:col-span-2 lg:col-span-5">
+            <div className="w-full">
+              <Progress
+                value={(currentTime / duration) * 100}
+                className="w-full"
+                max={duration || 100}
+              />
+            </div>
+          </div>
 
-        <HiOutlineXMark
-          onClick={closePodcastPlayer}
-          size="1.5rem"
-          className="text-white-4"
-        />
+          <div className="order-2 justify-self-start md:order-3 md:col-span-1">
+            <div className="flex gap-2">
+              <h2 className="text-16 font-normal text-white-1 ">
+                {formatTime(duration)}
+              </h2>
+              {/* <div className="flex"> */}
+              <Image
+                src={isMuted ? "/icons/unmute.svg" : "/icons/mute.svg"}
+                width={24}
+                height={24}
+                alt="mute unmute"
+                onClick={toggleMute}
+                className="cursor-pointer"
+              />
+            </div>
+          </div>
+
+          <div className="order-4 justify-self-center md:order-4 md:col-span-1 md:justify-self-end">
+            <HiOutlineXMark
+              onClick={closePodcastPlayer}
+              size="1.5rem"
+              className="text-white-1"
+            />
+          </div>
+        </div>
       </section>
     </div>
   );
